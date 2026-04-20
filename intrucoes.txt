@@ -1,0 +1,106 @@
+Entrega Parcial
+
+
+Desenvolver um sistema web utilizando PHP + HTML/CSS, com integração futura com MySQL, contemplando funcionalidades tanto para administrador (proprietário do site) quanto para clientes/usuários.
+
+O objetivo é aplicar, na prática, os conceitos estudados em sala de aula, incluindo:
+
+Estruturas de decisão
+Estruturas de repetição
+Uso de variáveis e operadores
+Manipulação de formulários
+Métodos GET e POST
+Uso de vetores (arrays)
+Organização do código com include/require
+
+
+Esta primeira entrega deve ter os seguintes itens: (será avaliado o PHP desta entrega)
+
+
+
+tela de login (administrador e usuário);
+index.php (com menu, e opções de navegação);
+funções.php;
+pelo menos uma página com formulário;
+pelo menos uma página com tabela;
+
+
+Descrição do Sistema
+O sistema deverá simular um site, contendo duas áreas principais:
+
+🔐 1. Área do Administrador (Backoffice)
+Acesso restrito via login.
+
+Funcionalidades:
+
+Cadastro de produtos
+Cadastro de clientes
+Listagem de produtos
+Listagem de clientes
+edição e exclusão de registros
+relatórios executivos
+🛒 2. Área do Cliente/Usuário
+Acesso público com login.
+
+Funcionalidades:
+
+Visualização do catálogo de produtos
+Visualização de detalhes dos produtos
+Adição de produtos ao carrinho
+Visualização do carrinho
+Simulação de compra
+Simulação de pagamento
+relatórios de consulta
+
+
+OBS: Na primeira entrega, os dados deverão ser armazenados em vetores (arrays).
+
+O uso do banco será exigido na segunda entrega.
+
+
+
+Estrutura do Projeto
+O sistema deverá obrigatoriamente seguir a seguinte organização:
+
+index.php: Arquivo principal (único acessado diretamente pelo usuário), responsável por controlar a navegação (menu e páginas)
+funcoes.php:Arquivo contendo apenas funções, como:
+Validação de login
+Validação de formulários
+Cálculos (ex: total do carrinho)
+Verificações diversas
+Outros arquivos (ex: páginas, componentes):
+Devem ser incluídos via include ou require
+
+
+Requisitos Técnicos
+O sistema deve obrigatoriamente utilizar:
+
+✅ PHP (estrutura procedural)
+✅ HTML + CSS (layout organizado)
+✅ Formulários (<form>)
+✅ Métodos GET e POST
+✅ Vetores (arrays)
+✅ Estruturas de decisão (if, else, switch)
+✅ Estruturas de repetição (for, while, foreach)
+✅ Includes (include / require)
+✅ Organização de código
+
+
+
+
+Critérios de Avaliação
+✔️ Organização do código
+
+✔️ Uso correto das estruturas de programação
+
+✔️ Funcionamento das funcionalidades
+
+✔️ Uso adequado de GET e POST
+
+✔️ Clareza e usabilidade da interface
+
+✔️ Separação de responsabilidades (index vs funções)
+
+✔️ Criatividade e funcionalidades extras
+
+https://gemini.google.com/share/f7ecfa46c49e
