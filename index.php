@@ -1,28 +1,49 @@
 <?php
-require_once 'funcoes.php';
-
-// Proteção simples de login
-if (!isset($_SESSION['usuario']) && $_GET['p'] != 'login') {
-    header('Location: index.php?p=login');
-}
-
-$pagina = $_GET['p'] ?? 'dashboard';
+    require_once "model/funcoes.php";
+    $pagina = isset($_GET['p']) ? $_GET['p'] : 'home';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Oficina</title>
+    <style>
+        /* Estilos para empurrar o footer para baixo */
+        html, body {
+            height: 100%;
+            margin: 10px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1; /* Faz o main expandir */
+            margin: 10px;
+            padding: 20px;
+        }
+        header, footer {
+            flex-shrink: 0; /* Impede que header/footer diminuam */
+            
+        }
+        
+    </style>
 </head>
+
 <body>
+    <header>
+    <?php
+        require_once "view/includes/header.php";
+    ?>
+</header>
     <nav>
         <h2>Oficina Pro</h2>
         <ul>
-            <li><a href="index.php?p=dashboard">Dashboard</a></li>
-            <li><a href="index.php?p=mecanicos_lista">Mecânicos</a></li>
-            <li><a href="index.php?p=servicos_cad">Novo Serviço</a></li>
+            <li><a href="index.php?p=cadastro_usuarios">Cadastro de Funcionários</a></li>
+            <li><a href="index.php?p=cadastro_servicos">Cadastro de Serviços </a></li>
+            <li><a href="index.php?p=login">Login</a></li>
+            <li><a href="index.php?p=servicos">Serviços Cadastrados</a></li>
             <li><a href="logout.php">Sair</a></li>
         </ul>
     </nav>
@@ -31,22 +52,32 @@ $pagina = $_GET['p'] ?? 'dashboard';
         <?php
         // Roteamento de páginas
         switch ($pagina) {
-            case 'dashboard':
-                include 'paginas/dashboard.php';
+            case 'home':
+                echo "<h1>Bem Vindo(a) á Oficina.</h1>";
                 break;
-            case 'mecanicos_lista':
-                include 'paginas/mecanicos_lista.php';
+            case 'cadastro_usuarios':
+                include 'view/cadastroUsuarios.php';
                 break;
-            case 'servicos_cad':
-                include 'paginas/servicos_formulario.php';
+            case 'cadastro_servicos':
+                include 'view/cadastroServicos.php';
                 break;
             case 'login':
-                include 'paginas/login.php';
+                //include '';
+                echo "<h1>Pagina de Login</h1>";
+                break;
+            case 'servicos':
+                //include '';
+                include 'view/servicosCadastrados.php';
                 break;
             default:
                 echo "<h1>Página não encontrada!</h1>";
         }
         ?>
     </main>
+    <footer>
+    <?php
+        require_once "view/includes/footer.php";
+    ?>
+</footer>
 </body>
 </html>
