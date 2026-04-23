@@ -38,13 +38,15 @@ function formatarMoeda($valor) {
     }
 
     function salvarServico($dados){
+        $total = (float)$dados['precoServico']+(float)$dados['precoPeca'];
+
         $novoServico = [
             'servico' => $dados['servico'],
             'tempo' => $dados['tempo'],
             'precoServico' => (float)$dados['precoServico'],
             'pecas' => $dados['pecas'],
             'precoPeca' => (float)$dados['precoPeca'],
-            'valorTotal' => (float)$dados['valorTotal']
+            'valorTotal' => $total
         ];
 
         $_SESSION['servicos_cadastrados'][] = $novoServico;
