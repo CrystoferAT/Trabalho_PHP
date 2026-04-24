@@ -7,7 +7,7 @@
     <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
         <thead>
             <tr>
-                <th>Servoço</th>
+                <th>Serviço</th>
                 <th>Preço</th>
                 <th>Peça</th>
                 <th>Preço da Peça</th>
@@ -33,8 +33,8 @@
                 <td><?= $s['servico'] ?></td>
                 <td><?= formatarMoeda($s['precoServico']) ?></td>
                 <td><?= $s['pecas'] ?></td>
-                <td><?= $s['precoPeca'] ?></td>
-                <td><?= $s['valorTotal'] ?></td>
+                <td><?= formatarMoeda($s['precoPeca']) ?></td>
+                <td><?= formatarMoeda($s['valorTotal']) ?></td>
                 <td>
                     <details>
         <summary style="cursor: pointer; color: blue; text-decoration: underline;">
@@ -57,8 +57,6 @@
                 <small>Preço Peça:</small><br>
                 <input type="number" step="0.01" name="precoPeca" value="<?= $s['precoPeca'] ?>" required><br><br>
 
-                <small>Valor Total:</small><br>
-                <input type="number" step="0.01" name="valorTotal" value="<?= $s['valorTotal'] ?>" required><br><br>
                 
                 <button type="submit" name="salvar">Atualizar</button>
             </form>

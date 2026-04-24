@@ -58,7 +58,14 @@ function formatarMoeda($valor) {
 
     function editarServicos($indice, $novosDados){
         if(isset($_SESSION['servicos_cadastrados'][$indice])){
-            $_SESSION['servicos_cadastrados'][$indice] = $novosDados;
+        $total = (float)$novosDados['precoServico']+(float)$novosDados['precoPeca'];
+            $_SESSION['servicos_cadastrados'][$indice] = [
+                'servico'       => $novosDados['servico'],
+                'precoServico'  => (float)$novosDados['precoServico'],
+                'pecas'         => $novosDados['pecas'],
+                'precoPeca'     => (float)$novosDados['precoPeca'],
+                'valorTotal'    => $total
+            ];
             return true;        
         }
         return false;

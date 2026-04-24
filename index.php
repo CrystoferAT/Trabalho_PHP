@@ -40,6 +40,7 @@
     <nav>
         <h2>Oficina Pro</h2>
         <ul>
+            <li><a href="index.php?p=home">Home</a></li>
             <li><a href="index.php?p=cadastro_usuarios">Cadastro de Funcionários</a></li>
             <li><a href="index.php?p=cadastro_servicos">Cadastro de Serviços </a></li>
             <li><a href="index.php?p=login">Login</a></li>
