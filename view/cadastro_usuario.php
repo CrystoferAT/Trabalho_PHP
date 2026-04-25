@@ -1,32 +1,32 @@
 <?php
+$erro = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $novoUser = $_POST['usuario'];
-    $novaSenha = $_POST['senha'];
+    $nome  = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-    // Salva no "banco de dados" da sessão
-    // Nota: Em um sistema real, aqui você usaria password_hash
-    $_SESSION['usuarios_cadastrados'][] = [
-        'usuario' => $novoUser,
-        'senha' => $novaSenha
-    ];
-
-    echo "<script>alert('Conta criada com sucesso! Agora faça login.'); window.location.href='index.php?v=login';</script>";
+    if (cadastrarCliente($nome, $email, $senha)) {
+        // Redireciona para o login com sucesso
+        header("Location: index.php?p=login&msg=sucesso");
+        exit;
+    } else {
+        $erro = "Erro: Este e-mail já está cadastrado no sistema!";
+    }
 }
 ?>
 
-<div class="login-container">
-    <div class="login-box">
-        <h2>Criar Nova Conta</h2>
-        <p>Preencha os dados abaixo</p>
+<div>
+    <h2>Cadastro de Novo Cliente</h2>
+    
+    <?php if ($erro): ?>
+        <p style="color: red;"><?= $erro ?></p>
+    <?php endif; ?>
 
-        <form action="index.php?v=cadastro_usuario" method="POST">
-            <input type="text" name="usuario" placeholder="Escolha um usuário" required>
-            <input type="password" name="senha" placeholder="Escolha uma senha" required>
-            <button type="submit" style="width: 100%; background-color: #3498db;">Criar Conta</button>
-        </form>
-
-        <p style="margin-top: 15px; font-size: 0.9rem;">
-            Já tem conta? <a href="index.php?v=login" style="color: #3498db; text-decoration: none;">Voltar ao login</a>
-        </p>
-    </div>
+    <form action="index.php?p=cadastro_usuario" method="POST">
+        <input type="text" name="nome" placeholder="Nome Completo" required><br><br>
+        <input type="email" name="email" placeholder="E-mail" required><br><br>
+        <input type="password" name="senha" placeholder="Senha" required><br><br>
+        <button type="submit">Cadastrar</button>
+    </form>
 </div>
