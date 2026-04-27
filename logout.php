@@ -10,3 +10,4 @@ session_destroy();
 // Redireciona o usuário para a tela de login
 header("Location: index.php?v=login");
 exit;
+?>

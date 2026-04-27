@@ -1,6 +1,19 @@
-<nav style="background-color: #333; padding: 10px; margin-bottom: 2,px;">
-    <ul style="list-style: none; display: flex; gap: 15px;">
-        <li><h1 style="color: white">Header</h1></li>
-    
-    </ul>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-dark bg-dark shadow-sm mb-3">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <i class="bi bi-gear-fill me-2"></i> 
+            <span class="h4 mb-0 text-uppercase fw-bold">Oficina Mecânica</span>
+        </a>
+        <ul class="navbar-nav d-flex flex-row gap-3">
+            <li class="nav-item"><a class="nav-link active" href="?p=dashboard">Painel</a></li>
+            <li class="nav-item"><a class="nav-link text-danger"  href="logout.php">Sair</a></li>
+        </ul>
+    </div>
 </nav>
+
+<main class="container my-5">
+    </main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

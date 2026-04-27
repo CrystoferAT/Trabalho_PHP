@@ -11,13 +11,13 @@ if ($acao == 'add') {
         }
         $_SESSION['carrinho'][] = $_SESSION['servicos_cadastrados'][$id];
     }
-    // Redireciona de volta para a view do carrinho
-    header("Location: index.php?p=carrinho");
+    
+    header("Location: index.php?p=orcamento&status=sucesso");
     exit;
 }
 
 if ($acao == 'limpar') {
     unset($_SESSION['carrinho']);
-    header("Location: index.php?p=carrinho");
+    header("Location: index.php?p=Carrinho"); 
     exit;
 }
