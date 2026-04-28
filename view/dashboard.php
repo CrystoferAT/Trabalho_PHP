@@ -1,5 +1,5 @@
 <?php  $pagina = isset($_GET['p']) ? $_GET['p'] : 'dash'; 
-// Busca os dados através das funções da model
+
 $listaServicos = listarServicos();
 $listaUsuarios = listarUsuarios(); // Funcionários
 $listaClientes = listarClientes(); 

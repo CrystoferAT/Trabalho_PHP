@@ -77,7 +77,6 @@
                                             </td>
                                             <td>
                                                 <?php 
-                                                    // Lógica simples para mudar a cor da etiqueta baseada no nível
                                                     $cor = 'bg-secondary';
                                                     if($usuario['nivel'] == 'Pro master') $cor = 'bg-danger';
                                                     if($usuario['nivel'] == 'Master') $cor = 'bg-warning text-dark';

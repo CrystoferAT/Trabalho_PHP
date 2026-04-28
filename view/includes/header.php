@@ -2,12 +2,7 @@
 
 <nav class="navbar navbar-dark bg-dark shadow-sm mb-3">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <i class="bi bi-gear-fill me-2"></i> 
-            <span class="h4 mb-0 text-uppercase fw-bold">Oficina Mecânica</span>
-        </a>
         <ul class="navbar-nav d-flex flex-row gap-3">
-            <li class="nav-item"><a class="nav-link active" href="?p=dashboard">Painel</a></li>
             <li class="nav-item"><a class="nav-link text-danger"  href="logout.php">Sair</a></li>
         </ul>
     </div>

@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    // Chama a função e verifica se o retorno é verdadeiro
     if (cadastrarCliente($nome, $email, $senha)) {
     echo "<script>
             alert('Cadastro realizado com sucesso!');
@@ -15,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </script>";
     exit;
 }else {
-        // Se caiu aqui, ou o e-mail já existe ou a função retornou false
         $erro = "Erro: Este e-mail já está cadastrado ou houve um problema no servidor!";
     }
 }

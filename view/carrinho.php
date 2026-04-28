@@ -1,6 +1,6 @@
 <?php
   $pagina = isset($_GET['p']) ? $_GET['p'] : 'Carrinho'; 
-// 1. Lógica de Processamento (Actions)
+
 if (isset($_GET['acao'])) {
     $acao = $_GET['acao'];
     
@@ -14,7 +14,7 @@ if (isset($_GET['acao'])) {
         limparOrcamento();
     }
     
-    // Redireciona para limpar a URL (evita reenvio de comandos ao dar F5)
+    
     header("Location: index.php?p=Carrinho");
     exit;
 }

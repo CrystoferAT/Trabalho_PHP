@@ -33,9 +33,7 @@
 </head>
 
 <body class="bg-light h-100">
-    <header>
-        <?php require_once "view/includes/header.php"; ?>
-    </header>
+   
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold text-uppercase" href="index.php?p=home">
@@ -71,14 +69,15 @@
                     <li class="nav-item">
                         <a class="nav-link <?= $pagina == 'cadastro' ? 'active' : '' ?>" href="index.php?p=cadastro">Cadastro</a>
                     </li>
-                    <li class="nav-item ms-lg-3">
+                    <!-- <li class="nav-item ms-lg-3">
                         <a class="btn btn-primary btn-sm px-4 fw-bold" href="index.php?p=login">
                             <i class="bi bi-box-arrow-in-right me-1"></i> Login
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
+        <?php require_once "view/includes/header.php"; ?>
     </nav>
 
     <main class="flex-grow-1">
@@ -93,8 +92,8 @@
                             <p class='fs-4 text-muted'>Gerencie serviços, peças e funcionários em um só lugar.</p>
                             <hr class='my-4 mx-auto w-25'>
                             <div class='d-flex justify-content-center gap-2'>
-                                <a href='?p=cadastro_servicos' class='btn btn-dark btn-lg px-4'>Novo Serviço</a>
-                                <a href='?p=servicos' class='btn btn-outline-secondary btn-lg px-4'>Ver Lista</a>
+                                <a href='?p=login' class='btn btn-dark btn-lg px-4'>Login</a>
+                                <a href='?p=cadastro' class='btn btn-outline-secondary btn-lg px-4'>Cadastre-se</a>
                             </div>
                         </div>
                     </div>";

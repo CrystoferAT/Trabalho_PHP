@@ -1,6 +1,6 @@
 <?php
     $pagina = isset($_GET['p']) ? $_GET['p'] : 'orcamento';
-    // Certifique-se de que a model está acessível
+    
     $servicos = listarServicos();
 ?>
     <?php if (isset($_GET['status']) && $_GET['status'] === 'sucesso'): ?>

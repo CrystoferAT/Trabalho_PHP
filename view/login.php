@@ -1,8 +1,8 @@
 <?php
-    // Pegamos a pergunta do captcha usando a função global
+    
     $pergunta = gerarCaptcha();
 
-    // Verificamos se há algum erro vindo da URL (enviado pelo Controller)
+    
     $erro_tipo = $_GET['erro'] ?? '';
     $erro_msg = "";
 
