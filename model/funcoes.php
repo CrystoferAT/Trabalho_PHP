@@ -7,6 +7,7 @@ function validarLogin($email, $pass) {
     if (isset($_SESSION['usuarios'])) {
         foreach ($_SESSION['usuarios'] as $u) {
             if ($u['email'] === $email && $u['senha'] === $pass) {
+                $_SESSION['usuario_id'] = $u['id'];
                 $_SESSION['usuario_nome'] = $u['nome'];
                 $_SESSION['usuario_nivel'] = $u['nivel']; 
                 $_SESSION['autenticado'] = true;
@@ -96,7 +97,7 @@ function formatarMoeda($valor) {
             'senha' => $dadosUsuario['senha']
         ];
 
-        $_SESSION['usuarios'][] = $usuario; 
+        $_SESSION['usuarios'][] = $usuario;
     }
 
 
@@ -181,5 +182,29 @@ function removerDoOrcamento($indice) {
         return true;
     }
     return false;
+}
+
+if (!isset($_SESSION['usuarios']) || empty($_SESSION['usuarios'])) {
+    $_SESSION['usuarios'] = [
+        [
+            'id'    => 1,
+            'nome'  => 'Administrador',
+            'email' => 'admin@email.com',
+            'senha' => '123', 
+            'nivel' => 'admin'
+        ]
+    ];
+}
+
+function verificarAcesso($nivelRequerido = null) {
+    if (!isset($_SESSION['usuario_id'])) {
+        header("Location: index.php?p=login&erro=restrito");
+        exit;
+    }
+
+    if ($nivelRequerido && $_SESSION['usuario_nivel'] !== $nivelRequerido) {
+        header("Location: index.php?p=home&erro=permissao");
+        exit;
+    }
 }
 ?>

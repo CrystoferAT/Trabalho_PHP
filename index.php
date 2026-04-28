@@ -3,6 +3,7 @@
     session_start();
     require_once "model/funcoes.php";
     $pagina = isset($_GET['p']) ? $_GET['p'] : 'home';
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" class="h-100">
@@ -44,37 +45,46 @@
             </button>
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'home' ? 'active' : '' ?>" href="index.php?p=home">Home</a>
-                    </li>
-                    <li class="nav-item border-start border-secondary ms-lg-2 ps-lg-2">
-                        <a class="nav-link <?= $pagina == 'cadastro_usuarios' ? 'active' : '' ?>" href="index.php?p=cadastro_usuarios">Funcionários</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'cadastro_servicos' ? 'active' : '' ?>" href="index.php?p=cadastro_servicos">Novos Serviços</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'servicos' ? 'active' : '' ?>" href="index.php?p=servicos">Listagem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'orcamento' ? 'active' : '' ?>" href="index.php?p=orcamento">Orçamento</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'Carrinho' ? 'active' : '' ?>" href="index.php?p=Carrinho">Carrinho</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'dash' ? 'active' : '' ?>" href="index.php?p=dash">DashBoard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pagina == 'cadastro' ? 'active' : '' ?>" href="index.php?p=cadastro">Cadastro</a>
-                    </li>
-                    <!-- <li class="nav-item ms-lg-3">
-                        <a class="btn btn-primary btn-sm px-4 fw-bold" href="index.php?p=login">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Login
-                        </a>
-                    </li> -->
-                </ul>
+               <ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+        <a class="nav-link <?= $pagina == 'home' ? 'active' : '' ?>" href="index.php?p=home">Home</a>
+    </li>
+
+    <?php if (isset($_SESSION['usuario_id'])): ?>
+        <?php if ($_SESSION['usuario_nivel'] === 'admin'): ?>
+            <li class="nav-item">
+                <a class="nav-link <?= $pagina == 'cadastro_usuarios' ? 'active' : '' ?>" href="index.php?p=cadastro_usuarios">Funcionários</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= $pagina == 'cadastro_servicos' ? 'active' : '' ?>" href="index.php?p=cadastro_servicos">Novos Serviços</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= $pagina == 'servicos' ? 'active' : '' ?>" href="index.php?p=servicos">Listagem</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?= $pagina == 'dash' ? 'active' : '' ?>" href="index.php?p=dash">DashBoard</a>
+            </li>
+        <?php endif; ?>
+
+        
+</li>
+
+    <?php else: ?>
+        <li class="nav-item">
+            <li class="nav-item">
+            <a class="nav-link <?= $pagina == 'orcamento' ? 'active' : '' ?>" href="index.php?p=orcamento">Orçamento</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $pagina == 'Carrinho' ? 'active' : '' ?>" href="index.php?p=Carrinho">Carrinho</a>
+        </li>
+        
+        <li class="nav-item ms-lg-2">
+    <a class="btn btn-outline-light btn-sm mt-1" href="logout.php">
+        Sair (<?= explode(' ', $_SESSION['usuario_nome'] ?? 'Usuário')[0] ?>)
+    </a>
+        </li>
+    <?php endif; ?>
+</ul>
             </div>
         </div>
         <?php require_once "view/includes/header.php"; ?>
@@ -99,18 +109,21 @@
                     </div>";
                     break;
                 case 'cadastro_usuarios':
+                    verificarAcesso('admin');
                     include 'view/cadastroUsuarios.php';
                     break;
                 case 'cadastro':
                     include 'view/cadastro_usuario.php';
                     break;
                 case 'cadastro_servicos':
+                    verificarAcesso('admin');
                     include 'view/cadastroServicos.php';
                     break;
                 case 'login':
                     include 'view/login.php';
                     break;
                 case 'servicos':
+                    verificarAcesso('admin');
                     include 'view/servicosCadastrados.php';
                     break;
                 case 'orcamento':
@@ -120,6 +133,7 @@
                     include 'view/carrinho.php';
                     break;
                 case 'dash':
+                    verificarAcesso('admin');
                     include 'view/dashboard.php';
                     break;
                 default:

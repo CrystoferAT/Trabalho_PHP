@@ -2,7 +2,6 @@
     
     $pergunta = gerarCaptcha();
 
-    
     $erro_tipo = $_GET['erro'] ?? '';
     $erro_msg = "";
 

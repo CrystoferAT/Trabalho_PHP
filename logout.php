@@ -1,9 +1,12 @@
 <?php
 session_start();
 
-session_unset();
 
-session_destroy();
+unset($_SESSION['usuario_id']);
+unset($_SESSION['usuario_nome']);
+unset($_SESSION['usuario_nivel']);
+unset($_SESSION['autenticado']);
+
 
 header("Location: index.php?v=login");
 exit;

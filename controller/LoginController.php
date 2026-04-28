@@ -22,5 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: ../index.php?p=login&erro=dados");
             exit;
         }
+        unset($_SESSION['captcha_soma']);
     }
 }
