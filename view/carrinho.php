@@ -111,6 +111,10 @@ $totalGeral = calcularTotalOrcamento();
             <button class="btn btn-success btn-lg px-5 shadow fw-bold" onclick="window.print()">
                 <i class="bi bi-printer me-2"></i>Imprimir Orçamento
             </button>
+
+            <a href="index.php?p=pagamento" class="btn btn-success btn-lg px-5 shadow fw-bold">
+                <i class="bi bi-credit-card me-2"></i>Finalizar Pagamento
+            </a>
         </div>
     <?php endif; ?>
 </div>
