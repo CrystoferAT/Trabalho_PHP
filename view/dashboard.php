@@ -1,7 +1,7 @@
 <?php  $pagina = isset($_GET['p']) ? $_GET['p'] : 'dash'; 
 
 $listaServicos = listarServicos();
-$listaUsuarios = listarUsuarios(); // Funcionários
+$listaUsuarios = listarUsuarios(); 
 $listaClientes = listarClientes(); 
 ?>
 

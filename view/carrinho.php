@@ -35,7 +35,7 @@ $totalGeral = calcularTotalOrcamento();
             <i class="bi bi-cart3 text-primary me-2"></i>Seu Orçamento
         </h2>
         <div>
-            <a href="index.php?p=orcamento" class="btn btn-outline-primary btn-sm">
+            <a href="index.php?p=Orcamento" class="btn btn-outline-primary btn-sm">
                 <i class="bi bi-arrow-left"></i> Adicionar mais serviços
             </a>
             <?php if (!empty($itensNoOrcamento)): ?>

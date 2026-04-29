@@ -1,5 +1,5 @@
 <?php
-    $pagina = isset($_GET['p']) ? $_GET['p'] : 'orcamento';
+    $pagina = isset($_GET['p']) ? $_GET['p'] : 'Orcamento';
     
     $servicos = listarServicos();
 ?>

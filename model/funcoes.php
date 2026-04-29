@@ -3,6 +3,12 @@ if(session_status() === PHP_SESSION_NONE){
         session_start();
     }
 
+function gerarId($lista){
+    if(empty($lista))return 1;
+    $ultimo = end($lista);
+    return $ultimo["id"] + 1;
+}
+
 function validarLogin($email, $pass) {
     if (isset($_SESSION['usuarios'])) {
         foreach ($_SESSION['usuarios'] as $u) {
@@ -43,7 +49,10 @@ function formatarMoeda($valor) {
     function salvarServico($dados){
         $total = (float)$dados['precoServico']+(float)$dados['precoPeca'];
 
+        $id = gerarId($_SESSION['servico']);
+
         $novoServico = [
+            'id' => $id,
             'servico' => $dados['servico'],
             'tempo' => $dados['tempo'],
             'precoServico' => (float)$dados['precoServico'],
@@ -87,10 +96,9 @@ function formatarMoeda($valor) {
         if(!isset($_SESSION['usuarios'])){
             $_SESSION['usuarios'] = [];
         }
-        
-        $proximoId = count($_SESSION['usuarios']) + 1;
+        $id = gerarId($_SESSION['usuarios']); 
         $usuario = [
-            'id'    =>$proximoId,
+            'id'    =>$id,
             'nome'  => $dadosUsuario['nome'],
             'nivel' => $dadosUsuario['nivel'],
             'email' => $dadosUsuario['email'],
@@ -124,7 +132,10 @@ function cadastrarCliente($nome, $email, $senha) {
         }
     }
 
+    $id = gerarId($_SESSION['clientes']);
+
     $_SESSION['clientes'][] = [
+        'id' => $id ,
         'nome' => $nome,
         'email' => $email,
         'senha' => $senha, 

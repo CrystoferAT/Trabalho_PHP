@@ -16,7 +16,7 @@
                         <div class="mb-3">
                             <label class="form-label fw-bold d-block">Nível de Acesso</label>
                             <div class="btn-group w-100" role="group" aria-label="Níveis de acesso">
-                                <input type="radio" class="btn-check" name="nivel" id="pro" value="Pro master" required>
+                                <input type="radio" class="btn-check" name="nivel" id="pro" value="pro" required>
                                 <label class="btn btn-outline-danger" for="pro">Pro</label>
 
                                 <input type="radio" class="btn-check" name="nivel" id="master" value="Master">
