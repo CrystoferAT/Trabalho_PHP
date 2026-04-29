@@ -1,5 +1,5 @@
 <?php
-    ob_start(); // Inicia o buffer de saída
+    ob_start();
     session_start();
     require_once "model/funcoes.php";
     $pagina = isset($_GET['p']) ? $_GET['p'] : 'home';
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
     <style>
-        /* CSS adicional apenas para garantir o Footer no rodapé em páginas com pouco conteúdo */
         html,body {
             min-height: 100vh;
             margin: 0;
@@ -135,6 +134,28 @@
                 case 'dash':
                     verificarAcesso('admin');
                     include 'view/dashboard.php';
+                    break;
+                case 'pagamento':
+                    include 'view/pagamento.php';
+                    break;
+                case 'sucesso':
+                    $numPedido = isset($_GET['pedido']) ? htmlspecialchars($_GET['pedido']) : '';
+                    echo "
+                    <div class='p-5 mb-4 bg-white border rounded-3 shadow-sm'>
+                        <div class='container-fluid py-5 text-center'>
+                            <i class='bi bi-check-circle-fill text-success' style='font-size: 4rem;'></i>
+                            <h1 class='display-5 fw-bold text-dark mt-3'>Pagamento Aprovado!</h1>
+                            <p class='fs-4 text-muted'>Obrigado por fechar negócio com a Oficina Pro.</p>
+                            <div class='bg-light p-3 rounded-3 d-inline-block mt-2 mb-4 border'>
+                                <span class='fs-5'>Número do seu pedido:</span><br>
+                                <strong class='fs-3 text-primary'>{$numPedido}</strong>
+                            </div>
+                            <br>
+                            <a href='index.php?p=home' class='btn btn-dark btn-lg px-4'>
+                                <i class='bi bi-house-door me-2'></i>Voltar ao Início
+                            </a>
+                        </div>
+                    </div>";
                     break;
                 default:
                     echo "
