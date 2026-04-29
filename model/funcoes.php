@@ -207,4 +207,34 @@ function verificarAcesso($nivelRequerido = null) {
         exit;
     }
 }
+
+function calcularTotalCarrinho() {
+    $total = 0;
+    if (isset($_SESSION['carrinho'])) {
+        foreach ($_SESSION['carrinho'] as $item) {
+            $total += $item['valorTotal'];
+        }
+    }
+    return $total;
+}
+
+function finalizarPagamento($metodoPagamento) {
+    if (!isset($_SESSION['pedidos_realizados'])) {
+        $_SESSION['pedidos_realizados'] = [];
+    }
+
+    $pedido = [
+        'id_pedido' => uniqid(), 
+        'itens'     => listarItensOrcamento(),
+        'total'     => calcularTotalOrcamento(),
+        'metodo'    => $metodoPagamento,
+        'data'      => date('d/m/Y H:i:s')
+    ];
+
+    $_SESSION['pedidos_realizados'][] = $pedido;
+
+    limparOrcamento();
+
+    return $pedido['id_pedido'];
+}
 ?>
